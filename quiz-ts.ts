@@ -3,10 +3,19 @@
 
 // * ---------------- 请补充……
 
-const getData = async () =>
-  await fetch('https://jsonplaceholder.typicode.com/todos/').then((response) => response.json());
+interface TodoItem {
+  userId: number
+  id: number
+  title: string
+  completed: boolean
+}
 
-getData().then((e) => console.log(e));
+const getData = async () =>
+  await fetch('https://jsonplaceholder.typicode.com/todos/').then(
+    (response) => response.json() as Promise<TodoItem[]>
+  )
+
+getData().then((e) => console.log(e))
 
 // * ---------------- TS 的示例
 
@@ -15,13 +24,13 @@ getData().then((e) => console.log(e));
 {
   // * TS 类型声明
   type MyObj = {
-    id: string;
-    name: string;
-  };
+    id: string
+    name: string
+  }
 
   // * 最基本的 TS == JS 加上 类型
-  const getId = (obj: MyObj): string => obj.id;
+  const getId = (obj: MyObj): string => obj.id
 
-  const id = getId({ id: 'user02', name: 'LC' });
-  console.log(id.startsWith('user'));
+  const id = getId({ id: 'user02', name: 'LC' })
+  console.log(id.startsWith('user'))
 }

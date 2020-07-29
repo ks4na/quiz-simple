@@ -45,3 +45,25 @@ Demo 代码可以新建一个或多个文件（不限），
 > ```
 
 答：
+
+- Q1:
+
+  ```scss
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    > div:nth-child(1) {
+      flex-grow: 1;
+    }
+  }
+  ```
+
+- Q2:
+
+  - less/scss - 预编译，增加了嵌套写法、变量定义、导入模块等特性；
+  - postcss + autoprefixer + browserslist - 后编译，提升 css 兼容性；
+  - css 模块化 - 通过 hash 等方式保证 css 样式的隔离性；
+  - css-in-js （只用过 material-ui 提供的方案）- 以 js 的方式书写 css，提高组件的自治程度，方便根据变量来进行样式改变；
+  - stylelint - css 代码风格检查工具。
