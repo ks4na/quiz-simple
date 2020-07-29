@@ -7,24 +7,54 @@
  */
 const getSumOfTriple = (arr, start, end) => {
   // 请实现……
-};
+
+  let result = 0
+
+  /**
+   * 判断 value 是否在 (start, end) 之间
+   * @param {number} value 值
+   * @param {number | undefined} start 起始值
+   * @param {number | undefined} end 结束值
+   */
+  function isInRange(value, start, end) {
+    let flag = true
+
+    if (start !== undefined) {
+      flag = flag && value > start
+    }
+
+    if (end !== undefined) {
+      flag = flag && value < end
+    }
+
+    return flag
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 3 === 0 && isInRange(arr[i], start, end)) {
+      result += arr[i]
+    }
+  }
+
+  return result
+}
 
 // * ---------------- 实现的效果：
 
 {
-  const arr = [5, 8, 3, 9, 4, 7, 1, 2, 6];
+  const arr = [5, 8, 3, 9, 4, 7, 1, 2, 6]
 
   //          [      3  9              6]
 
-  console.log(getSumOfTriple(arr)); // => 18
+  console.log(getSumOfTriple(arr)) // => 18
 }
 
 {
   // * arr = [0, 7, 14, 21, ... , 987, 994]
-  const arr = Array.from({ length: 143 }, (e, i) => i * 7);
+  const arr = Array.from({ length: 143 }, (e, i) => i * 7)
 
   // 203, 210, 217, 224, 231, 238, ..., 455, 462, 469, 476, 483, 490, 497
   //      210            231       ...       462            483
 
-  console.log(getSumOfTriple(arr, 200, 500)); // => 4851
+  console.log(getSumOfTriple(arr, 200, 500)) // => 4851
 }

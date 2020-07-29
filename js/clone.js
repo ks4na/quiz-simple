@@ -4,6 +4,31 @@
 // * ---------------- 解决下文中缺少 clone 函数的问题……
 // 在这里写代码……
 
+function clone(obj) {
+  // 不是数组或对象
+  if (obj === null || typeof obj !== 'object') {
+    return obj
+  }
+
+  let newObj
+  if (Array.isArray(obj)) {
+    // obj 为数组
+    newObj = []
+    for (const item of obj) {
+      newObj.push(clone(item))
+    }
+  } else {
+    // obj 为对象
+    newObj = {}
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        newObj[key] = obj[key]
+      }
+    }
+  }
+
+  return newObj
+}
 // * ---------------- 实现的效果：
 
 {
@@ -15,12 +40,12 @@
         type: 'student',
       },
     ],
-  };
+  }
 
-  const mirrorData = clone(data);
+  const mirrorData = clone(data)
 
-  mirrorData.person[0].age = 19;
+  mirrorData.person[0].age = 19
 
-  console.log(mirrorData.person[0].age === 19);
-  console.log(data.person[0].age === 24);
+  console.log(mirrorData.person[0].age === 19)
+  console.log(data.person[0].age === 24)
 }

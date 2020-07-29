@@ -5,9 +5,17 @@
  */
 const getHostName = (url) => {
   // 请实现……
-};
+
+  // 保证 url 以 / 结尾
+  if (!url.endsWith('/')) {
+    url += '/'
+  }
+  const regExpHost = /(\w+):\/\/(.+?)\/(.*)/
+  regExpHost.test(url)
+  return RegExp.$2
+}
 
 // * ---------------- 实现的效果：
 {
-  console.log(getHostName(`https://help.github.com/cn/github`)); // => `help.github.com`
+  console.log(getHostName(`https://help.github.com/cn/github`)) // => `help.github.com`
 }
