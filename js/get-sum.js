@@ -10,26 +10,6 @@ const getSumOfTriple = (arr, start, end) => {
 
   let result = 0
 
-  /**
-   * 判断 value 是否在 (start, end) 之间
-   * @param {number} value 值
-   * @param {number | undefined} start 起始值
-   * @param {number | undefined} end 结束值
-   */
-  function isInRange(value, start, end) {
-    let flag = true
-
-    if (start !== undefined) {
-      flag = flag && value > start
-    }
-
-    if (end !== undefined) {
-      flag = flag && value < end
-    }
-
-    return flag
-  }
-
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 3 === 0 && isInRange(arr[i], start, end)) {
       result += arr[i]
@@ -37,6 +17,26 @@ const getSumOfTriple = (arr, start, end) => {
   }
 
   return result
+}
+
+/**
+ * 判断值 value 是否在 (start, end) 之间
+ * @param {number} value 值
+ * @param {number | undefined} start 起始值
+ * @param {number | undefined} end 结束值
+ */
+function isInRange(value, start, end) {
+  let flag = true
+
+  if (start !== undefined) {
+    flag = flag && value > start
+  }
+
+  if (end !== undefined) {
+    flag = flag && value < end
+  }
+
+  return flag
 }
 
 // * ---------------- 实现的效果：
